@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raízes e Regeneração | Agroecologia</title>
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS E PALETA DE CORES --- */
+        :root {
+            --cor-fundo: #fbf9f6;       /* Bege claro/areia */
+            --cor-primaria: #3b533e;    /* Verde oliva escuro */
+            --cor-secundaria: #8c6239;  /* Castanho/Terroso */
+            --cor-acento: #a3b899;      /* Verde folha suave */
+            --cor-texto: #2c2c2c;      /* Grafite escuro */
+            --cor-branca: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER E NAVEGAÇÃO --- */
+        header {
+            background-color: var(--cor-primaria);
+            padding: 1.5rem 10%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            color: var(--cor-fundo);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--cor-acento);
+        }
+
+        nav a {
+            color: var(--cor-fundo);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-acento);
+        }
+
+        /* --- HERO SECTION (BANNER PRINCIPAL) --- */
+        .hero {
+            padding: 6rem 10% 4rem 10%;
+            text-align: center;
+            background: linear-gradient(180deg, #e3ede0 0%, var(--cor-fundo) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--cor-secundaria);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-weight: 500;
+        }
+
+        .btn {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-branca);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--cor-primaria);
+        }
+
+        /* --- SEÇÃO PILARES (CARDS) --- */
+        .secao {
+            padding: 5rem 10%;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            color: var(--cor-primaria);
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .titulo-secao::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--cor-secundaria);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        .grid-pilares {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--cor-branca);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--cor-acento);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        /* --- SEÇÃO INTERATIVA (JAVASCRIPT) --- */
+        .calculadora-box {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branca);
+            border-radius: 8px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .calculadora-box h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .resultado {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+            display: none; /* Escondido por padrão, aparece via JS */
+        }
+
+        .resultado p {
+            margin-bottom: 0.5rem;
+        }
+
+        .resultado strong {
+            color: var(--cor-acento);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--cor-primaria);
+            color: var(--cor-fundo);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--cor-secundaria);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Raízes<span>&Regeneração</span></div>
+        <nav>
+            <a href="#sobre">Filosofia</a>
+            <a href="#pilares">Práticas</a>
+            <a href="#impacto">Simulador</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="sobre">
+        <h1>Produzir em Harmonia com a Terra</h1>
+        <p>Descubra como a agricultura regenerativa e o respeito aos ciclos biológicos estão moldando o novo ecossistema do agro sustentável.</p>
+        <a href="#impacto" class="btn">Simule seu Impacto</a>
+    </section>
+
+    <section class="secao" id="pilares">
+        <h2 class="titulo-secao">Nossos Pilares Ecológicos</h2>
+        <div class="grid-pilares">
+            <div class="card">
+                <h3>Solo Vivo</h3>
+                <p>O uso de plantas de cobertura e o plantio direto protegem a microbiota da terra, garantindo nutrientes naturais sem a necessidade de químicos agressivos.</p>
+            </div>
+            <div class="card">
+                <h3>Agrofloresta</h3>
+                <p>Integrar árvores nativas com plantações agrícolas recria o ecossistema florestal, aumenta a biodiversidade e gera novos fluxos de renda.</p>
+            </div>
+            <div class="card">
+                <h3>Fontes Protegidas</h3>
+                <p>Mapeamento e isolamento de nascentes dentro das propriedades, garantindo água limpa para a lavoura e para as próximas gerações.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao" id="impacto">
+        <h2 class="titulo-secao">Simulador de Regeneração</h2>
+        <div class="calculadora-box">
+            <h3>Veja o impacto da transição ecológica</h3>
+            <div class="input-group">
+                <label for="hectares">Quantos hectares você deseja converter para o manejo sustentável?</label>
+                <input type="number" id="hectares" placeholder="Ex: 50" min="1">
+            </div>
+            <button class="btn" style="width: 100%; background-color: var(--cor-secundaria);" onclick="calcularImpacto()">Calcular Impacto Ambiental</button>
+
+            <div class="resultado" id="painel-resultado">
+                <p>Ao converter essa área para práticas regenerativas anualmente você irá obter:</p>
+                <p>• CO₂ Retido no Solo: <strong id="co2">0</strong> toneladas/ano.</p>
+                <p>• Água Preservada: <strong id="agua">0</strong> mil litros economizados.</p>
+                <p>• Biodiversidade: Cerca de <strong id="especies">0</strong> novas espécies de polinizadores beneficiadas.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Raízes & Regeneração. Cultivando o amanhã, hoje.</p>
+    </footer>
+
+    <script>
+        function calcularImpacto() {
+            // Captura o valor digitado pelo usuário
+            const hectares = parseFloat(document.getElementById('hectares').value);
+            const painel = document.getElementById('painel-resultado');
+
+            // Validação simples para garantir que o usuário digitou um número válido
+            if (isNaN(hectares) || hectares <= 0) {
+                alert("Por favor, insira um número válido de hectares.");
+                painel.style.display = "none";
+                return;
+            }
+
+            // Cálculos fictícios baseados em médias de impacto agroecológico
+            const calculoCO2 = (hectares * 4.8).toFixed(1); 
+            const calculoAgua = (hectares * 120).toLocaleString('pt-BR');
+            const calculoEspecies = Math.floor(hectares * 3.5);
+
+            // Injeta os resultados de volta nas tags HTML correspondentes
+            document.getElementById('co2').innerText = calculoCO2;
+            document.getElementById('agua').innerText = calculoAgua;
+            document.getElementById('especies').innerText = calculoEspecies;
+
+            // Torna o painel de resultados visível aplicando estilo inline
+            painel.style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raízes e Regeneração | Agrinho Sustentável</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header id="menu-principal">
+        <div class="logo-container">
+            <img src="assets/icone-folha.svg" alt="Ícone de Folha" class="logo-img">
+            <span class="logo-texto">Raízes&Regeneração</span>
+        </div>
+        <nav class="links-navegacao">
+            <a href="#banner-introducao">Filosofia</a>
+            <a href="#secao-praticas">Práticas</a>
+            <a href="#secao-simulador">Simulador</a>
+            <button id="btn-tema" onclick="alternarModoEscuro()">Modo Escuro</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="banner-introducao">
+            <h1 class="titulo-principal">O Equilíbrio Entre Produzir e Preservar</h1>
+            <p class="subtitulo-principal">Mostrando que o agro forte protege a biodiversidade e regenera a força que vem do solo.</p>
+        </section>
+
+        <section id="secao-praticas" class="conteudo-central">
+            <h2 class="titulo-secao">Nossas Práticas Ecológicas</h2>
+            <div class="grid-cards">
+                <article class="card-ecologico">
+                    <h3>Microbiota do Solo</h3>
+                    <p>O plantio direto associado à rotação de culturas mantém a terra viva, rica em microrganismos benéficos e livre de erosão.</p>
+                </article>
+                <article class="card-ecologico">
+                    <h3>Sistemas Agroflorestais</h3>
+                    <p>União inteligente de culturas agrícolas com árvores nativas, promovendo o retorno da fauna e o conforto térmico do campo.</p>
+                </article>
+                <article class="card-ecologico">
+                    <h3>Água para o Futuro</h3>
+                    <p>Estratégias de conservação de bacias hidrográficas locais e recuperação ativa de matas ciliares ao redor de nascentes.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="secao-simulador" class="conteudo-central">
+            <h2 class="titulo-secao">Simulador de Impacto Agroecológico</h2>
+            
+            <form id="formulario-ambiental" onsubmit="event.preventDefault();">
+                <div class="campo-formulario">
+                    <label for="input-nome">Nome do Produtor / Aluno:</label>
+                    <input type="text" id="input-nome" placeholder="Digite seu nome para personalização" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="input-hectares">Área pretendida para conversão sustentável (Hectares):</label>
+                    <input type="number" id="input-hectares" placeholder="Exemplo: 35" min="1" required>
+                </div>
+
+                <button type="button" id="btn-calcular" onclick="processarDadosAmbientais()">Calcular Impacto Real</button>
+            </form>
+
+            <div id="caixa-resultado">
+                <h4 id="saudacao-usuario"></h4>
+                <p>Ao adotar o manejo regenerativo em sua propriedade, os ganhos ecológicos anuais estimados serão de:</p>
+                <ul>
+                    <li>Carbono Retido no Solo: <span id="calc-co2" class="destaque-numerico">0</span> toneladas métricas.</li>
+                    <li>Água Doce Preservada: <span id="calc-agua" class="destaque-numerico">0</span> mil litros cúbicos.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape-institucional">
+        <p>&copy; 2026 Projeto Agrinho - Semeando Educação e Sustentabilidade.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
+///////
+
+3. Estilização: css/style.css
+Crie este arquivo dentro da pasta css.
+CSS
+/* --- COMPORTAMENTO DE VARIÁVEIS E CORES (IDENTIDADE VISUAL PROPRIA) --- */
+:root {
+    --fundo-principal: #faf7f2;      /* Creme suave, foge do branco genérico */
+    --texto-principal: #2d332e;      /* Grafite escuro orgânico */
+    --cor-natureza-escura: #344e41; /* Verde Floresta */
+    --cor-terra: #a36a43;           /* Terracota */
+    --cor-folha-clara: #dad7cd;     /* Verde acinzentado suave */
+    --fundo-card: #ffffff;
+    --efeito-transicao: all 0.35s ease-in-out;
+}
+
+/* --- CLASSE SELETORA DE MODO ESCURO ATIVADA POR INTERAÇÃO JS --- */
+body.modo-escuro {
+    --fundo-principal: #1b201c;
+    --texto-principal: #f4f7f5;
+    --cor-natureza-escura: #a3b19b;
+    --cor-terra: #e29578;
+    --fundo-card: #252b26;
+}
+
+/* --- CONFIGURAÇÕES BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    transition: var(--efeito-transicao);
+}
+
+/* --- LAYOUT DO MENU SUPERIOR (DISPLAY FLEX) --- */
+#menu-principal {
+    background-color: #344e41; /* Fixo para manter contraste de leitura elevado */
+    padding: 1.2rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-texto {
+    color: #faf7f2;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.links-navegacao a {
+    color: #faf7f2;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: var(--efeito-transicao);
+}
+
+/* Efeito Hover guiando a atenção visual */
+.links-navegacao a:hover {
+    color: var(--cor-terra);
+}
+
+#btn-tema {
+    background-color: transparent;
+    color: #faf7f2;
+    border: 1px solid #faf7f2;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    font-weight: bold;
+    transition: var(--efeito-transicao);
+}
+
+#btn-tema:hover {
+    background-color: #faf7f2;
+    color: #344e41;
+}
+
+/* --- HERO BANNER --- */
+#banner-introducao {
+    padding: 6rem 10% 4rem 10%;
+    text-align: center;
+}
+
+.titulo-principal {
+    font-size: 2.8rem;
+    color: var(--cor-natureza-escura);
+    margin-bottom: 1.5rem;
+}
+
+.subtitulo-principal {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--texto-principal);
+    opacity: 0.9;
+}
+
+/* --- SEÇÃO GRID DE CARDS (DISPLAY GRID) --- */
+.conteudo-central {
+    padding: 4rem 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-secao {
+    text-align: center;
+    color: var(--cor-natureza-escura);
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.card-ecologico {
+    background-color: var(--fundo-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+    border-top: 4px solid var(--cor-terra);
+    transition: var(--efeito-transicao);
+}
+
+.card-ecologico:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.card-ecologico h3 {
+    color: var(--cor-natureza-escura);
+    margin-bottom: 1rem;
+}
+
+/* --- FORMULÁRIO E COMPONENTES DE INTERAÇÃO --- */
+#formulario-ambiental {
+    background-color: var(--fundo-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.campo-formulario label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.campo-formulario input {
+    padding: 0.8rem;
+    border: 1px solid var(--cor-folha-clara);
+    border-radius: 6px;
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    font-size: 1rem;
+}
+
+#btn-calcular {
+    background-color: var(--cor-terra);
+    color: #ffffff;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--efeito-transicao);
+}
+
+#btn-calcular:hover {
+    background-color: #344e41;
+    letter-spacing: 0.5px;
+}
+
+/* Elemento manipulado via JS */
+#caixa-resultado {
+    background-color: var(--fundo-card);
+    border-left: 5px solid var(--cor-terra);
+    padding: 2rem;
+    border-radius: 0 12px 12px 0;
+    max-width: 600px;
+
