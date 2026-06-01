@@ -1,0 +1,211 @@
+/* --- COMPORTAMENTO DE VARIÁVEIS E CORES (IDENTIDADE VISUAL PROPRIA) --- */
+:root {
+    --fundo-principal: #faf7f2;      /* Creme suave, foge do branco genérico */
+    --texto-principal: #2d332e;      /* Grafite escuro orgânico */
+    --cor-natureza-escura: #344e41; /* Verde Floresta */
+    --cor-terra: #a36a43;           /* Terracota */
+    --cor-folha-clara: #dad7cd;     /* Verde acinzentado suave */
+    --fundo-card: #ffffff;
+    --efeito-transicao: all 0.35s ease-in-out;
+}
+
+/* --- CLASSE SELETORA DE MODO ESCURO ATIVADA POR INTERAÇÃO JS --- */
+body.modo-escuro {
+    --fundo-principal: #1b201c;
+    --texto-principal: #f4f7f5;
+    --cor-natureza-escura: #a3b19b;
+    --cor-terra: #e29578;
+    --fundo-card: #252b26;
+}
+
+/* --- CONFIGURAÇÕES BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    transition: var(--efeito-transicao);
+}
+
+/* --- LAYOUT DO MENU SUPERIOR (DISPLAY FLEX) --- */
+#menu-principal {
+    background-color: #344e41; /* Fixo para manter contraste de leitura elevado */
+    padding: 1.2rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-texto {
+    color: #faf7f2;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.links-navegacao a {
+    color: #faf7f2;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: var(--efeito-transicao);
+}
+
+/* Efeito Hover guiando a atenção visual */
+.links-navegacao a:hover {
+    color: var(--cor-terra);
+}
+
+#btn-tema {
+    background-color: transparent;
+    color: #faf7f2;
+    border: 1px solid #faf7f2;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    font-weight: bold;
+    transition: var(--efeito-transicao);
+}
+
+#btn-tema:hover {
+    background-color: #faf7f2;
+    color: #344e41;
+}
+
+/* --- HERO BANNER --- */
+#banner-introducao {
+    padding: 6rem 10% 4rem 10%;
+    text-align: center;
+}
+
+.titulo-principal {
+    font-size: 2.8rem;
+    color: var(--cor-natureza-escura);
+    margin-bottom: 1.5rem;
+}
+
+.subtitulo-principal {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--texto-principal);
+    opacity: 0.9;
+}
+
+/* --- SEÇÃO GRID DE CARDS (DISPLAY GRID) --- */
+.conteudo-central {
+    padding: 4rem 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-secao {
+    text-align: center;
+    color: var(--cor-natureza-escura);
+    margin-bottom: 3rem;
+    font-size: 2rem;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.card-ecologico {
+    background-color: var(--fundo-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+    border-top: 4px solid var(--cor-terra);
+    transition: var(--efeito-transicao);
+}
+
+.card-ecologico:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.card-ecologico h3 {
+    color: var(--cor-natureza-escura);
+    margin-bottom: 1rem;
+}
+
+/* --- FORMULÁRIO E COMPONENTES DE INTERAÇÃO --- */
+#formulario-ambiental {
+    background-color: var(--fundo-card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.campo-formulario label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.campo-formulario input {
+    padding: 0.8rem;
+    border: 1px solid var(--cor-folha-clara);
+    border-radius: 6px;
+    background-color: var(--fundo-principal);
+    color: var(--texto-principal);
+    font-size: 1rem;
+}
+
+#btn-calcular {
+    background-color: var(--cor-terra);
+    color: #ffffff;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--efeito-transicao);
+}
+
+#btn-calcular:hover {
+    background-color: #344e41;
+    letter-spacing: 0.5px;
+}
+
+/* Elemento manipulado via JS */
+#caixa-resultado {
+    background-color: var(--fundo-card);
+    border-left: 5px solid var(--cor-terra);
+    padding: 2rem;
+    border-radius: 0 12px 12px 0;
+    max-width: 600px;
+
