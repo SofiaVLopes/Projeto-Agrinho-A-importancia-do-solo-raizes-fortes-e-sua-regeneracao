@@ -3,102 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raízes e Regeneração | Agroecologia</title>
-</head>
-<body>
-
-    <header>
-        <div class="logo">Raízes<span>&Regeneração</span></div>
-        <nav>
-            <a href="#sobre">Filosofia</a>
-            <a href="#pilares">Práticas</a>
-            <a href="#impacto">Simulador</a>
-        </nav>
-    </header>
-
-    <section class="hero" id="sobre">
-        <h1>Produzir em Harmonia com a Terra</h1>
-        <p>Descubra como a agricultura regenerativa e o respeito aos ciclos biológicos estão moldando o novo ecossistema do agro sustentável.</p>
-        <a href="#impacto" class="btn">Simule seu Impacto</a>
-    </section>
-
-    <section class="secao" id="pilares">
-        <h2 class="titulo-secao">Nossos Pilares Ecológicos</h2>
-        <div class="grid-pilares">
-            <div class="card">
-                <h3>Solo Vivo</h3>
-                <p>O uso de plantas de cobertura e o plantio direto protegem a microbiota da terra, garantindo nutrientes naturais sem a necessidade de químicos agressivos.</p>
-            </div>
-            <div class="card">
-                <h3>Agrofloresta</h3>
-                <p>Integrar árvores nativas com plantações agrícolas recria o ecossistema florestal, aumenta a biodiversidade e gera novos fluxos de renda.</p>
-            </div>
-            <div class="card">
-                <h3>Fontes Protegidas</h3>
-                <p>Mapeamento e isolamento de nascentes dentro das propriedades, garantindo água limpa para a lavoura e para as próximas gerações.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="secao" id="impacto">
-        <h2 class="titulo-secao">Simulador de Regeneração</h2>
-        <div class="calculadora-box">
-            <h3>Veja o impacto da transição ecológica</h3>
-            <div class="input-group">
-                <label for="hectares">Quantos hectares você deseja converter para o manejo sustentável?</label>
-                <input type="number" id="hectares" placeholder="Ex: 50" min="1">
-            </div>
-            <button class="btn" style="width: 100%; background-color: var(--cor-secundaria);" onclick="calcularImpacto()">Calcular Impacto Ambiental</button>
-
-            <div class="resultado" id="painel-resultado">
-                <p>Ao converter essa área para práticas regenerativas anualmente você irá obter:</p>
-                <p>• CO₂ Retido no Solo: <strong id="co2">0</strong> toneladas/ano.</p>
-                <p>• Água Preservada: <strong id="agua">0</strong> mil litros economizados.</p>
-                <p>• Biodiversidade: Cerca de <strong id="especies">0</strong> novas espécies de polinizadores beneficiadas.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Raízes & Regeneração. Cultivando o amanhã, hoje.</p>
-    </footer>
-
-    <script>
-        function calcularImpacto() {
-            // Captura o valor digitado pelo usuário
-            const hectares = parseFloat(document.getElementById('hectares').value);
-            const painel = document.getElementById('painel-resultado');
-
-            // Validação simples para garantir que o usuário digitou um número válido
-            if (isNaN(hectares) || hectares <= 0) {
-                alert("Por favor, insira um número válido de hectares.");
-                painel.style.display = "none";
-                return;
-            }
-
-            // Cálculos fictícios baseados em médias de impacto agroecológico
-            const calculoCO2 = (hectares * 4.8).toFixed(1); 
-            const calculoAgua = (hectares * 120).toLocaleString('pt-BR');
-            const calculoEspecies = Math.floor(hectares * 3.5);
-
-            // Injeta os resultados de volta nas tags HTML correspondentes
-            document.getElementById('co2').innerText = calculoCO2;
-            document.getElementById('agua').innerText = calculoAgua;
-            document.getElementById('especies').innerText = calculoEspecies;
-
-            // Torna o painel de resultados visível aplicando estilo inline
-            painel.style.display = "block";
-        }
-    </script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raízes e Regeneração | Agrinho Sustentável</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -176,3 +80,5 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
+
