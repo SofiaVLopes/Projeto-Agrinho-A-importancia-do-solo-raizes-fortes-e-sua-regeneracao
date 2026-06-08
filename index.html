@@ -1,82 +1,185 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raízes e Regeneração | Agrinho Sustentável</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <header id="menu-principal">
-        <div class="logo-container">
-            <img src="assets/icone-folha.svg" alt="Ícone de Folha" class="logo-img">
-            <span class="logo-texto">Raízes&Regeneração</span>
+<header class="main-header">
+    <div class="container header-container">
+        <div class="logo">
+            <img src="assets/icone-folha.svg" alt="Ícone Folha" class="logo-icon">
+            <span>Agro<strong>Sustentável</strong></span>
         </div>
-        <nav class="links-navegacao">
-            <a href="#banner-introducao">Filosofia</a>
-            <a href="#secao-praticas">Práticas</a>
-            <a href="#secao-simulador">Simulador</a>
-            <button id="btn-tema" onclick="alternarModoEscuro()">Modo Escuro</button>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#tecnologia">Agrotech</a></li>
+                <li><a href="#vozes">Vozes do Campo</a></li>
+                <li><a href="#regulatorio">Regulatório</a></li>
+                <li><a href="#simulador" class="btn-nav">Simulador</a></li>
+            </ul>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main>
-        <section id="banner-introducao">
-            <h1 class="titulo-principal">O Equilíbrio Entre Produzir e Preservar</h1>
-            <p class="subtitulo-principal">Mostrando que o agro forte protege a biodiversidade e regenera a força que vem do solo.</p>
-        </section>
+<section id="home" class="hero-section">
+    <div class="container hero-content">
+        <h1>Produzir mais, proteger sempre.</h1>
+        <p class="hero-subtitle">O equilíbrio perfeito entre a força da nossa produção e a regeneração do nosso planeta.</p>
+        <div class="manifesto-box">
+            <h3>Nosso Manifesto</h3>
+            <p>O agronegócio e o meio ambiente não caminham em lados opostos. Eles são parceiros históricos de sobrevivência. Cuidar do solo, proteger as nascentes e regenerar ecossistemas é o único caminho para garantir que a terra continue alimentando as próximas gerações com fartura e respeito.</p>
+        </div>
+        <a href="#pilares" class="btn-primary">Conhecer Práticas Verdes</a>
+    </div>
+</section>
 
-        <section id="secao-praticas" class="conteudo-central">
-            <h2 class="titulo-secao">Nossas Práticas Ecológicas</h2>
-            <div class="grid-cards">
-                <article class="card-ecologico">
-                    <h3>Microbiota do Solo</h3>
-                    <p>O plantio direto associado à rotação de culturas mantém a terra viva, rica em microrganismos benéficos e livre de erosão.</p>
-                </article>
-                <article class="card-ecologico">
-                    <h3>Sistemas Agroflorestais</h3>
-                    <p>União inteligente de culturas agrícolas com árvores nativas, promovendo o retorno da fauna e o conforto térmico do campo.</p>
-                </article>
-                <article class="card-ecologico">
-                    <h3>Água para o Futuro</h3>
-                    <p>Estratégias de conservação de bacias hidrográficas locais e recuperação ativa de matas ciliares ao redor de nascentes.</p>
-                </article>
+<section id="pilares" class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Pilares da Sustentabilidade</h2>
+            <p>Como o equilíbrio acontece na prática diária dentro das propriedades rurais brasileiras.</p>
+        </div>
+        <div class="grid-cards">
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3>Manejo Sustentável do Solo</h3>
+                <p>Aplicação de técnicas de plantio direto na palha, rotação planejada de culturas e a integração Lavoura-Pecuária-Floresta (iLPF) para restaurar a fertilidade natural.</p>
             </div>
-        </section>
-
-        <section id="secao-simulador" class="conteudo-central">
-            <h2 class="titulo-secao">Simulador de Impacto Agroecológico</h2>
-            
-            <form id="formulario-ambiental" onsubmit="event.preventDefault();">
-                <div class="campo-formulario">
-                    <label for="input-nome">Nome do Produtor / Aluno:</label>
-                    <input type="text" id="input-nome" placeholder="Digite seu nome para personalização" required>
-                </div>
-
-                <div class="campo-formulario">
-                    <label for="input-hectares">Área pretendida para conversão sustentável (Hectares):</label>
-                    <input type="number" id="input-hectares" placeholder="Exemplo: 35" min="1" required>
-                </div>
-
-                <button type="button" id="btn-calcular" onclick="processarDadosAmbientais()">Calcular Impacto Real</button>
-            </form>
-
-            <div id="caixa-resultado">
-                <h4 id="saudacao-usuario"></h4>
-                <p>Ao adotar o manejo regenerativo em sua propriedade, os ganhos ecológicos anuais estimados serão de:</p>
-                <ul>
-                    <li>Carbono Retido no Solo: <span id="calc-co2" class="destaque-numerico">0</span> toneladas métricas.</li>
-                    <li>Água Doce Preservada: <span id="calc-agua" class="destaque-numerico">0</span> mil litros cúbicos.</li>
-                </ul>
+            <div class="card">
+                <div class="card-icon">💧</div>
+                <h3>Gestão Hídrica de Precisão</h3>
+                <p>Uso de irrigação inteligente e monitorada, reuso estratégico de águas residuárias e cercamento para proteção ativa de nascentes e matas ciliares.</p>
             </div>
-        </section>
-    </main>
+            <div class="card">
+                <div class="card-icon">🪲</div>
+                <h3>Bioinsumos e Defensivos</h3>
+                <p>Transição gradual para o uso de defensivos biológicos e insumos orgânicos, protegendo as plantações contra pragas sem agredir a biodiversidade local.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">☀️</div>
+                <h3>Energias Renováveis</h3>
+                <p>Implementação de matrizes energéticas limpas no campo, como usinas solares fotovoltaicas e biodigestores para aproveitamento de biomassa e resíduos.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <footer id="rodape-institucional">
-        <p>&copy; 2026 Projeto Agrinho - Semeando Educação e Sustentabilidade.</p>
-    </footer>
+<section id="tecnologia" class="section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2>Tecnologia e Inovação (Agrotech)</h2>
+            <p>O "agro forte" hoje opera de maneira digital, conectada e extremamente inteligente.</p>
+        </div>
+        <div class="tech-layout">
+            <div class="tech-item">
+                <h3>Agricultura de Precisão</h3>
+                <p>Sensores de solo, inteligência artificial aplicada e GPS agrícola garantem a aplicação exata de insumos por metro quadrado, eliminando desperdícios.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Monitoramento por Satélite</h3>
+                <p>Imagens orbitais de alta resolução e drones de mapeamento ajudam a vigiar a saúde da lavoura em tempo real e combatem preventivamente focos de degradação.</p>
+            </div>
+            <div class="tech-item">
+                <h3>Rastreabilidade Total</h3>
+                <p>Sistemas modernos baseados em Blockchain permitem que o consumidor final saiba a origem exata do alimento e todas as práticas socioambientais aplicadas no cultivo.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+<section id="simulador" class="section-padding bg-dark text-white">
+    <div class="container">
+        <div class="simulator-container">
+            <div class="simulator-info">
+                <h2>Simulador de Impacto Ecológico</h2>
+                <p>Insira a área planejada para a adoção de práticas sustentáveis (como plantio direto e iLPF) e descubra uma estimativa do impacto ambiental positivo gerado em um ano de manejo regenerativo.</p>
+                <form id="impact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="hectares">Quantidade de Hectares (ha):</label>
+                        <input type="number" id="hectares" min="1" placeholder="Ex: 50" required>
+                    </div>
+                    <button type="button" id="btn-calcular" class="btn-accent">Calcular Impacto Verde</button>
+                </form>
+            </div>
+            <div class="simulator-results" id="results-box">
+                <h3>Resultados Estimados (Anual)</h3>
+                <div class="result-grid">
+                    <div class="result-card">
+                        <span class="result-val" id="res-co2">0</span>
+                        <span class="result-label">Toneladas de CO₂ sequestradas</span>
+                    </div>
+                    <div class="result-card">
+                        <span class="result-val" id="res-agua">0</span>
+                        <span class="result-label">Milhões de litros de água poupados</span>
+                    </div>
+                    <div class="result-card">
+                        <span class="result-val" id="res-solo">0</span>
+                        <span class="result-label">Microorganismos ativos restaurados</span>
+                    </div>
+                </div>
+                <p class="disclaimer">*Cálculos baseados em médias técnicas de conservação e regeneração agroecológica.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="vozes" class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Vozes do Campo</h2>
+            <p>Histórias reais de quem vive da terra e prova que sustentabilidade gera alta rentabilidade.</p>
+        </div>
+        <div class="cases-row">
+            <div class="case-card">
+                <blockquote>"Após a implantação da rotação de culturas e bioinsumos, reduzimos os custos com defensivos químicos em 35% e a nossa produtividade por hectare subiu."</blockquote>
+                <cite>— Seu Valdir, Produtor de Grãos da Região Sul</cite>
+            </div>
+            <div class="case-card">
+                <blockquote>"A integração Lavoura-Pecuária-Floresta trouxe sombra para o gado e recuperou completamente o pasto que estava degradado. O lucro dobrou."</blockquote>
+                <cite>— Mariana Costa, Engenheira Agrônoma e Pecuarista</cite>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="regulatorio" class="section-padding">
+    <div class="container">
+        <div class="section-header">
+            <h2>Espaço Regulatório e Certificações</h2>
+            <p>Informações fundamentais para adequação do produtor aos mercados mais exigentes do mundo.</p>
+        </div>
+        <div class="table-container">
+            <table class="regulatory-table">
+                <thead>
+                    <tr>
+                        <th>Mecanismo / Norma</th>
+                        <th>O que significa na prática?</th>
+                        <th>Benefício Comercial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Código Florestal (CAR)</strong></td>
+                        <td>Regularização ambiental da propriedade através do mapeamento de APPs e Reserva Legal.</td>
+                        <td>Garantia de segurança jurídica e acesso a linhas de crédito verde subsidiadas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mercado de Carbono</strong></td>
+                        <td>Remuneração financeira pela manutenção de áreas de floresta em pé e captação de gases estufa.</td>
+                        <td>Nova fonte de receita recorrente para a propriedade rural sustentável.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Selos Verdes & Certificações</strong></td>
+                        <td>Auditorias que atestam a ausência de desmatamento e o uso de boas práticas agrícolas.</td>
+                        <td>Abertura direta para canais de exportação na Europa e Ásia com valor agregado.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <div class="container footer-content">
+        <p>&copy; 2026 AgroForte, Futuro Sustentável. Projeto Agrinho - Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco no equilíbrio ecológico e regeneração do campo.</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
