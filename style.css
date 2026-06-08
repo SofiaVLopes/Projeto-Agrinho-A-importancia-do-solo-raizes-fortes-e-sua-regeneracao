@@ -208,4 +208,105 @@ body {
     padding: 2rem;
     border-radius: 0 12px 12px 0;
     max-width: 600px;
+    margin: 2rem auto 0 auto;
+    display: none; /* Começa escondido e o JavaScript revela após o cálculo */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    transition: var(--efeito-transicao);
+}
+
+/* Classe ativada via JS para exibir o resultado com suavidade */
+#caixa-resultado.visivel {
+    display: block;
+    animation: surgimentoSuave 0.5s ease-in-out;
+}
+
+#caixa-resultado h4 {
+    color: var(--cor-natureza-escura);
+    margin-bottom: 0.8rem;
+    font-size: 1.25rem;
+}
+
+#caixa-resultado ul {
+    margin-top: 1rem;
+    list-style-type: none;
+}
+
+#caixa-resultado li {
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.destaque-numerico {
+    font-weight: bold;
+    color: var(--cor-terra);
+    font-size: 1.3rem;
+    background-color: rgba(163, 106, 67, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* --- RODAPÉ INSTITUCIONAL --- */
+#rodape-institucional {
+    background-color: #2d332e; /* Tom grafite escuro fixo para contraste */
+    color: #faf7f2;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-top: 5rem;
+    font-size: 0.95rem;
+    border-top: 3px solid var(--cor-terra);
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes surgimentoSuave {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+@media (max-width: 768px) {
+    #menu-principal {
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.5rem 5%;
+        text-align: center;
+    }
+
+    .links-navegacao {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+    .links-navegacao a {
+        margin-left: 0;
+        font-size: 1.1rem;
+    }
+
+    #btn-tema {
+        margin-left: 0;
+        margin-top: 0.4rem;
+        width: 100%;
+    }
+
+    .titulo-principal {
+        font-size: 2rem;
+    }
+
+    .titulo-secao {
+        font-size: 1.6rem;
+    }
+
+    .grid-cards {
+        grid-template-columns: 1fr; /* Força uma coluna única em telas pequenas */
+    }
 }
