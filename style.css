@@ -1,18 +1,31 @@
+/* ==========================================================================
+   1. VARIÁVEIS DE CORES E CONFIGURAÇÕES REUTILIZÁVEIS
+   ========================================================================== */
 :root {
-    --primary: #2e4336;      /* Verde Oliva Profundo / Floresta */
+    --primary: #2e4336;       /* Verde Oliva Profundo */
     --primary-light: #3f5e4d;
-    --secondary: #8c6239;    /* Marrom Terroso / Raiz */
-    --accent: #556b2f;       /* Verde Musgo */
-    --accent-light: #d2b48c;  /* Bege Claro / Areia */
-    --bg-light: #faf7f2;     /* Fundo Creme Orgânico */
+    --secondary: #8c6239;     /* Marrom Terroso */
+    --accent: #556b2f;        /* Verde Musgo */
+    --accent-light: #d2b48c;   /* Bege Claro */
+    --bg-light: #faf7f2;      /* Fundo Creme */
     --bg-white: #ffffff;
-    --text-dark: #2c2520;    /* Texto Escuro Suave */
+    --text-dark: #2c2520;     /* Texto Escuro */
     --text-light: #ffffff;
     --border-color: #e6dfd5;
     --transition: all 0.3s ease;
 }
 
-/* Adicionado o '*' aqui para aplicar o reset corretamente */
+/* Cores automáticas para o Modo Noturno */
+body.modo-noturno {
+    --bg-white: #181d1a;
+    --bg-light: #232a25;
+    --text-dark: #f0eae4;
+    --border-color: #38423b;
+}
+
+/* ==========================================================================
+   2. CONFIGURAÇÕES GLOBAIS E RESET
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,6 +37,7 @@ body {
     color: var(--text-dark);
     background-color: var(--bg-white);
     line-height: 1.6;
+    transition: var(--transition);
 }
 
 .container {
@@ -33,33 +47,49 @@ body {
     padding: 0 20px;
 }
 
-.section-padding {
-    padding: 80px 0;
+/* ==========================================================================
+   3. BARRA DE ACESSIBILIDADE
+   ========================================================================== */
+.barra-acessibilidade {
+    background-color: #222;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 0.85rem;
+}
+.container-acessibilidade {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+.barra-acessibilidade button {
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+.barra-acessibilidade button:hover {
+    background: var(--secondary);
 }
 
-.bg-light {
-    background-color: var(--bg-light);
-}
-
-.bg-dark {
-    background-color: var(--primary);
-}
-
-.text-white {
-    color: var(--text-light);
-}
-
-/* Cabeçalho e Menu Fixo */
-.main-header {
+/* ==========================================================================
+   4. CABEÇALHO E MENU DE NAVEGAÇÃO
+   ========================================================================== */
+.cabecalho {
     background-color: var(--bg-white);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    transition: var(--transition);
 }
 
-.header-container {
+.conteudo-cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,349 +103,437 @@ body {
     color: var(--primary);
 }
 
-.logo-icon {
+.imagem-logo {
     width: 28px;
     height: 28px;
     margin-right: 10px;
 }
 
-.navbar ul {
+/* Links do Menu (Computador) */
+.menu-navegacao ul {
     display: flex;
     list-style: none;
     align-items: center;
+    gap: 20px;
 }
 
-.navbar ul li {
-margin-left: 25px;
+.menu-navegacao ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 0.95rem;
 }
 
-.navbar ul li a {
-text-decoration: none;
-color: var(--text-dark);
-font-weight: 500;
-transition: var(--transition);
-font-size: 0.95rem;
+.menu-navegacao ul li a:hover {
+    color: var(--secondary);
 }
 
-.navbar ul li a:hover {
-color: var(--secondary);
+/* Botão de Destaque (Simulador) no Menu */
+.menu-navegacao ul li a.botao-destaque {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    padding: 8px 16px;
+    border-radius: 4px;
 }
 
-.navbar ul li a.btn-nav {
-background-color: var(--secondary);
-color: var(--text-light);
-padding: 8px 16px;
-border-radius: 4px;
+.menu-navegacao ul li a.botao-destaque:hover {
+    background-color: var(--primary);
 }
 
-.navbar ul li a.btn-nav:hover {
-background-color: var(--primary);
+/* Botão Hambúrguer (Escondido por padrão no PC) */
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
 }
 
-/* Seção Hero / Manifesto */
-.hero-section {
-background: linear-gradient(rgba(46, 67, 54, 0.85), rgba(46, 67, 54, 0.95)), url('data:image/svg+xml;utf8,');
-background-size: cover;
-color: var(--text-light);
-padding: 100px 0;
-text-align: center;
-}
-
-.hero-content h1 {
-font-size: 2.8rem;
-margin-bottom: 15px;
-font-family: 'Georgia', serif;
-}
-
-.hero-subtitle {
-font-size: 1.2rem;
-max-width: 700px;
-margin: 0 auto 40px auto;
-color: var(--accent-light);
-}
-
-.manifesto-box {
-background-color: rgba(255, 255, 255, 0.06);
-border-left: 4px solid var(--secondary);
-padding: 25px;
-max-width: 800px;
-margin: 0 auto 40px auto;
-text-align: left;
-border-radius: 0 8px 8px 0;
-}
-
-.manifesto-box h3 {
-margin-bottom: 10px;
-color: var(--accent-light);
-font-family: 'Georgia', serif;
-}
-
-.btn-primary {
-display: inline-block;
-background-color: var(--secondary);
-color: var(--text-light);
-text-decoration: none;
-padding: 12px 28px;
-font-weight: 600;
-border-radius: 4px;
-transition: var(--transition);
-}
-
-.btn-primary:hover {
-background-color: var(--accent);
-}
-
-/* Estrutura das Seções */
-.section-header {
-text-align: center;
-margin-bottom: 50px;
-}
-
-.section-header h2 {
-font-size: 2rem;
-color: var(--primary);
-margin-bottom: 10px;
-font-family: 'Georgia', serif;
-}
-
-.section-header p {
-color: var(--secondary);
-font-style: italic;
-}
-
-/* Cards dos Pilares */
-.grid-cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 30px;
-}
-
-.card {
-background-color: var(--bg-white);
-padding: 30px;
-border-radius: 8px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-border: 1px solid var(--border-color);
-transition: var(--transition);
-}
-
-.card:hover {
-transform: translateY(-5px);
-border-color: var(--secondary);
-}
-
-.card-icon {
-font-size: 2.5rem;
-margin-bottom: 15px;
-}
-
-.card h3 {
-font-size: 1.2rem;
-margin-bottom: 12px;
-color: var(--primary);
-}
-
-/* Tecnologia Layout */
-.tech-layout {
-display: flex;
-flex-direction: column;
-gap: 20px;
-max-width: 900px;
-margin: 0 auto;
-}
-
-.tech-item {
-background-color: var(--bg-light);
-padding: 25px;
-border-radius: 6px;
-border-left: 5px solid var(--primary-light);
-}
-
-.tech-item h3 {
-color: var(--primary);
-margin-bottom: 8px;
-}
-
-/* Simulador de Impacto Interativo */
-.simulator-container {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 40px;
-align-items: center;
-}
-
-.form-group {
-margin: 20px 0;
-}
-
-.form-group label {
-display: block;
-margin-bottom: 8px;
-font-weight: 500;
-}
-
-.form-group input {
-width: 100%;
-padding: 12px;
-border-radius: 4px;
-border: 1px solid rgba(255,255,255,0.2);
-background-color: rgba(255,255,255,0.05);
-color: var(--text-light);
-font-size: 1rem;
-}
-
-.btn-accent {
-background-color: var(--secondary);
-color: var(--text-light);
-border: none;
-padding: 12px 24px;
-font-size: 1rem;
-font-weight: 600;
-border-radius: 4px;
-cursor: pointer;
-transition: var(--transition);
-width: 100%;
-}
-
-.btn-accent:hover {
-background-color: var(--accent-light);
-color: var(--primary);
-}
-
-.simulator-results {
-background-color: rgba(255, 255, 255, 0.05);
-padding: 30px;
-border-radius: 8px;
-border: 1px dashed rgba(255,255,255,0.15);
-}
-
-.simulator-results h3 {
-margin-bottom: 20px;
-text-align: center;
-color: var(--accent-light);
-}
-
-.result-grid {
-display: grid;
-grid-template-columns: 1fr;
-gap: 15px;
-}
-
-.result-card {
-background-color: rgba(0,0,0,0.2);
-padding: 15px;
-border-radius: 6px;
-text-align: center;
-}
-
-.result-val {
-display: block;
-font-size: 1.8rem;
-font-weight: 700;
-color: var(--accent-light);
-}
-
-.result-label {
-font-size: 0.85rem;
-color: #cccccc;
-}
-
-.disclaimer {
-font-size: 0.75rem;
-color: #aaaaaa;
-margin-top: 15px;
-text-align: center;
-}
-
-/* Casos de Sucesso / Vozes do Campo */
-.cases-row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 30px;
-}
-
-.case-card {
-background-color: var(--bg-white);
-padding: 30px;
-border-radius: 8px;
-border-top: 4px solid var(--secondary);
-box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-}
-
-.case-card blockquote {
-font-style: italic;
-color: var(--text-dark);
-margin-bottom: 15px;
-}
-
-.case-card cite {
-font-weight: 600;
-color: var(--primary);
-font-style: normal;
-}
-
-/* Espaço Regulatório - Tabela Estilizada */
-.table-container {
-overflow-x: auto;
-}
-
-.regulatory-table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 20px;
-background-color: var(--bg-white);
-}
-
-.regulatory-table th,
-.regulatory-table td {
-padding: 15px;
-text-align: left;
-border-bottom: 1px solid var(--border-color);
-}
-
-.regulatory-table th {
-background-color: var(--primary);
-color: var(--text-light);
-font-weight: 600;
-}
-
-.regulatory-table tr:nth-child(even) {
-background-color: var(--bg-light);
-}
-
-/* Rodapé */
-.main-footer {
-background-color: #1e2c24;
-color: #99aaaa;
-padding: 40px 0;
-text-align: center;
-font-size: 0.9rem;
-border-top: 3px solid var(--secondary);
-}
-
-.footer-content p {
-margin-bottom: 8px;
+.menu-hamburguer .traco {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: var(--transition);
 }
 
 /* ==========================================================================
-RESPONSIVIDADE (MEDIA QUERIES)
-========================================================================== */
+   5. SEÇÕES DO SITE (CONTEÚDO E ESTRUTURA)
+   ========================================================================== */
+.espaco-secao {
+    padding: 80px 0;
+}
+
+.fundo-claro {
+    background-color: var(--bg-light);
+    transition: var(--transition);
+}
+
+.fundo-escuro {
+    background-color: var(--primary);
+}
+
+.texto-claro {
+    color: var(--text-light);
+}
+
+.titulo-secao {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titulo-secao h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+}
+
+.titulo-secao p {
+    color: var(--secondary);
+    font-style: italic;
+}
+
+/* --- Bloco de Início (Hero / Banner) --- */
+.bloco-inicio {
+    background: linear-gradient(rgba(46, 67, 54, 0.85), rgba(46, 67, 54, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232e4336" opacity="0.1"/></svg>');
+    background-size: cover;
+    color: var(--text-light);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.conteudo-inicio h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif;
+}
+
+.subtitulo-inicio {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    color: var(--accent-light);
+}
+
+.caixa-manifesto {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid var(--secondary);
+    padding: 25px;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: left;
+    border-radius: 0 8px 8px 0;
+}
+
+.caixa-manifesto h3 {
+    margin-bottom: 10px;
+    color: var(--accent-light);
+    font-family: 'Georgia', serif;
+}
+
+.botao-verde {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.botao-verde:hover {
+    background-color: var(--accent);
+}
+
+/* --- Cards dos Pilares --- */
+.grade-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card-item {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary);
+}
+
+.icone-card {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+
+/* --- Seção de Tecnologia (Agrotech) --- */
+.grade-tecnologia {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.item-tecnologia {
+    background-color: var(--bg-light);
+    padding: 25px;
+    border-radius: 6px;
+    border-left: 5px solid var(--primary-light);
+    transition: var(--transition);
+}
+
+.item-tecnologia h3 {
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+/* --- Painel do Simulador --- */
+.painel-calculadora {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.grupo-campo {
+    margin: 20px 0;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.grupo-campo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.05);
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.botao-laranja {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.botao-laranja:hover {
+    background-color: var(--accent-light);
+    color: var(--primary);
+}
+
+.resultados-calculadora {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255,255,255,0.15);
+}
+
+.resultados-calculadora h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--accent-light);
+}
+
+.grade-resultados {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.card-resultado {
+    background-color: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.numero-resultado {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-light);
+}
+
+.legenda-resultado {
+    font-size: 0.85rem;
+    color: #cccccc;
+}
+
+.aviso-calculadora {
+    font-size: 0.75rem;
+    color: #aaaaaa;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* --- Histórias Reais (Vozes do Campo) --- */
+.linha-depoimentos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.card-depoimento {
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 8px;
+    border-top: 4px solid var(--secondary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: var(--transition);
+}
+
+.card-depoimento blockquote {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.card-depoimento cite {
+    font-weight: 600;
+    color: var(--primary);
+    font-style: normal;
+}
+
+/* --- Área de Regras e Tabelas --- */
+.area-tabela {
+    overflow-x: auto;
+}
+
+.tabela-regras {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--bg-white);
+    transition: var(--transition);
+}
+
+.tabela-regras th,
+.tabela-regras td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabela-regras th {
+    background-color: var(--primary);
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.tabela-regras tr:nth-child(even) {
+    background-color: var(--bg-light);
+}
+
+/* --- Rodapé --- */
+.rodape {
+    background-color: #1e2c24;
+    color: #99aaaa;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--secondary);
+}
+
+.conteudo-rodape p {
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   6. RESPONSIVIDADE (MEDIA QUERIES INTEGRADO)
+   ========================================================================== */
 @media (max-width: 768px) {
-.header-container {
-flex-direction: column;
-gap: 15px;
-}
-.navbar ul {
-flex-wrap: wrap;
-justify-content: center;
-}
-.navbar ul li {
-margin: 5px 10px;
-}
-.hero-content h1 {
-font-size: 2rem;
-}
-.simulator-container, .cases-row {
-grid-template-columns: 1fr;
-}
+    /* Ativa o visual do botão Hambúrguer */
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    /* Transforma o menu em uma caixinha escondida no topo */
+    .menu-navegacao {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: none; 
+    }
+
+    /* Classe ativada pelo JS para abrir o menu */
+    .menu-navegacao.aberto {
+        display: block;
+    }
+
+    .menu-navegacao ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .menu-navegacao ul li {
+        width: 100%;
+    }
+
+    .menu-navegacao ul li a.botao-destaque {
+        display: block;
+        text-align: center;
+    }
+
+    /* Efeito de rotação do botão hambúrguer virando X */
+    .menu-hamburguer.ativo .traco:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-hamburguer.ativo .traco:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-hamburguer.ativo .traco:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -8px);
+    }
+
+    /* Organização de layouts para uma única coluna no celular */
+    .conteudo-cabecalho {
+        padding: 15px 20px;
+    }
+
+    .conteudo-inicio h1 {
+        font-size: 2rem;
+    }
+
+    .painel-calculadora, 
+    .linha-depoimentos {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }

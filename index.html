@@ -3,181 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroSustentável - Projeto Agrinho</title>
+    <title>AgroSustentável - Projeto Agrinho 3º Ano</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-<header class="main-header">
-    <div class="container header-container">
+<div class="barra-acessibilidade">
+    <div class="container container-acessibilidade">
+        <span>Acessibilidade:</span>
+        <button id="btn-contraste" title="Ativar Modo Noturno">🌓 Modo Noturno</button>
+        <button id="btn-aumentar-fonte" title="Aumentar Texto">A+</button>
+        <button id="btn-diminuir-fonte" title="Diminuir Texto">A-</button>
+    </div>
+</div>
+
+<header class="cabecalho">
+    <div class="container conteudo-cabecalho">
         <div class="logo">
-            <img src="assets/icone-folha.svg" alt="Ícone Folha" class="logo-icon">
+            <img src="assets/icone-folha.svg" alt="Ícone Folha" class="imagem-logo">
             <span>Agro<strong>Sustentável</strong></span>
         </div>
-        <nav class="navbar">
+        
+        <button class="menu-hamburguer" id="botao-menu" aria-label="Abrir menu">
+            <span class="traco"></span>
+            <span class="traco"></span>
+            <span class="traco"></span>
+        </button>
+
+        <nav class="menu-navegacao" id="menu-principal">
             <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#pilares">Pilares</a></li>
-                <li><a href="#tecnologia">Agrotech</a></li>
-                <li><a href="#vozes">Vozes do Campo</a></li>
-                <li><a href="#regulatorio">Regulatório</a></li>
-                <li><a href="#simulador" class="btn-nav">Simulador</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#ideias-principais">Pilares</a></li>
+                <li><a href="#tecnologia-campo">Agrotech</a></li>
+                <li><a href="#historias-reais">Vozes do Campo</a></li>
+                <li><a href="#leis-e-regras">Regulatório</a></li>
+                <li><a href="#calculadora-eco" class="botao-destaque">Simulador</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-<section id="home" class="hero-section">
-    <div class="container hero-content">
-        <h1>Produzir mais, proteger sempre.</h1>
-        <p class="hero-subtitle">O equilíbrio perfeito entre a força da nossa produção e a regeneração do nosso planeta.</p>
-        <div class="manifesto-box">
+<section id="inicio" class="bloco-inicio">
+    <div class="container conteudo-inicio">
+        <h1>Produzir bem para proteger o amanhã.</h1>
+        <p class="subtitulo-inicio">Como a nossa produção no campo pode andar de mãos dadas com o cuidado do planeta.</p>
+        <div class="caixa-manifesto">
             <h3>Nosso Manifesto</h3>
-            <p>O agronegócio e o meio ambiente não caminham em lados opostos. Eles são parceiros históricos de sobrevivência. Cuidar do solo, proteger as nascentes e regenerar ecossistemas é o único caminho para garantir que a terra continue alimentando as próximas gerações com fartura e respeito.</p>
+            <p>O agro e o meio ambiente não são inimigos. Eles dependem um do outro para existir. Cuidar da terra, proteger a água e recuperar o solo é o único jeito de garantir que o campo continue forte, alimentando todo mundo com fartura e respeito pelas próximas gerações.</p>
         </div>
-        <a href="#pilares" class="btn-primary">Conhecer Práticas Verdes</a>
+        <a href="#ideias-principais" class="botao-verde">Conhecer Práticas Verdes</a>
     </div>
 </section>
 
-<section id="pilares" class="section-padding bg-light">
+<section id="ideias-principais" class="espaco-secao fundo-claro">
     <div class="container">
-        <div class="section-header">
+        <div class="titulo-secao">
             <h2>Pilares da Sustentabilidade</h2>
-            <p>Como o equilíbrio acontece na prática diária dentro das propriedades rurais brasileiras.</p>
+            <p>Como o equilíbrio acontece no dia a dia das fazendas pelo Brasil.</p>
         </div>
-        <div class="grid-cards">
-            <div class="card">
-                <div class="card-icon">🌱</div>
-                <h3>Manejo Sustentável do Solo</h3>
-                <p>Aplicação de técnicas de plantio direto na palha, rotação planejada de culturas e a integração Lavoura-Pecuária-Floresta (iLPF) para restaurar a fertilidade natural.</p>
+        <div class="grade-cards">
+            <div class="card-item">
+                <div class="icone-card">🌱</div>
+                <h3>Cuidados com o Solo</h3>
+                <p>Usar o plantio direto na palha, rodar as culturas e misturar lavoura com floresta para devolver os nutrientes naturais da terra.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💧</div>
-                <h3>Gestão Hídrica de Precisão</h3>
-                <p>Uso de irrigação inteligente e monitorada, reuso estratégico de águas residuárias e cercamento para proteção ativa de nascentes e matas ciliares.</p>
+            <div class="card-item">
+                <div class="icone-card">💧</div>
+                <h3>Uso Esperto da Água</h3>
+                <p>Irrigação inteligente para não desperdiçar, reutilização da água e proteção forte ao redor de nascentes e rios.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🪲</div>
-                <h3>Bioinsumos e Defensivos</h3>
-                <p>Transição gradual para o uso de defensivos biológicos e insumos orgânicos, protegendo as plantações contra pragas sem agredir a biodiversidade local.</p>
+            <div class="card-item">
+                <div class="icone-card">🪲</div>
+                <h3>Defensivos Naturais</h3>
+                <p>Trocar aos poucos os produtos químicos por defensores biológicos, combatendo pragas sem detonar os insetos do bem.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">☀️</div>
-                <h3>Energias Renováveis</h3>
-                <p>Implementação de matrizes energéticas limpas no campo, como usinas solares fotovoltaicas e biodigestores para aproveitamento de biomassa e resíduos.</p>
+            <div class="card-item">
+                <div class="icone-card">☀️</div>
+                <h3>Energia Limpa</h3>
+                <p>Instalar placas de energia solar e usar restos orgânicos (biomassa) para gerar gás e eletricidade na própria fazenda.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="tecnologia" class="section-padding">
+<section id="tecnologia-campo" class="espaco-secao">
     <div class="container">
-        <div class="section-header">
-            <h2>Tecnologia e Inovação (Agrotech)</h2>
-            <p>O "agro forte" hoje opera de maneira digital, conectada e extremamente inteligente.</p>
+        <div class="titulo-secao">
+            <h2>Tecnologia e Inovação no Campo</h2>
+            <p>O "agro forte" hoje funciona de um jeito digital, conectado e muito inteligente.</p>
         </div>
-        <div class="tech-layout">
-            <div class="tech-item">
+        <div class="grade-tecnologia">
+            <div class="item-tecnologia">
                 <h3>Agricultura de Precisão</h3>
-                <p>Sensores de solo, inteligência artificial aplicada e GPS agrícola garantem a aplicação exata de insumos por metro quadrado, eliminando desperdícios.</p>
+                <p>Sensores na terra e GPS nas máquinas ajudam a colocar a quantidade exata de adubo ou água onde precisa, evitando desperdícios.</p>
             </div>
-            <div class="tech-item">
-                <h3>Monitoramento por Satélite</h3>
-                <p>Imagens orbitais de alta resolução e drones de mapeamento ajudam a vigiar a saúde da lavoura em tempo real e combatem preventivamente focos de degradação.</p>
+            <div class="item-tecnologia">
+                <h3>De Olho por Satélite</h3>
+                <p>Drones e fotos do espaço ajudam a vigiar a plantação inteira em tempo real, descobrindo pragas ou queimadas antes que piore.</p>
             </div>
-            <div class="tech-item">
-                <h3>Rastreabilidade Total</h3>
-                <p>Sistemas modernos baseados em Blockchain permitem que o consumidor final saiba a origem exata do alimento e todas as práticas socioambientais aplicadas no cultivo.</p>
+            <div class="item-tecnologia">
+                <h3>Origem Controlada (Rastreabilidade)</h3>
+                <p>Sistemas modernos que deixam o comprador saber exatamente de qual fazenda veio a comida e se ela respeitou o meio ambiente.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="simulador" class="section-padding bg-dark text-white">
+<section id="calculadora-eco" class="espaco-secao fundo-escuro texto-claro">
     <div class="container">
-        <div class="simulator-container">
-            <div class="simulator-info">
+        <div class="painel-calculadora">
+            <div class="dados-calculadora">
                 <h2>Simulador de Impacto Ecológico</h2>
-                <p>Insira a área planejada para a adoção de práticas sustentáveis (como plantio direto e iLPF) e descubra uma estimativa do impacto ambiental positivo gerado em um ano de manejo regenerativo.</p>
-                <form id="impact-form" onsubmit="event.preventDefault();">
-                    <div class="form-group">
-                        <label for="hectares">Quantidade de Hectares (ha):</label>
+                <p>Coloque o tamanho da área (em hectares) onde pretende aplicar as técnicas sustentáveis para ver uma estimativa do bem que você fará à natureza em um ano!</p>
+                <form id="formulario-impacto" onsubmit="event.preventDefault();">
+                    <div class="grupo-campo">
+                        <label for="hectares">Quantos Hectares (ha)?</label>
                         <input type="number" id="hectares" min="1" placeholder="Ex: 50" required>
                     </div>
-                    <button type="button" id="btn-calcular" class="btn-accent">Calcular Impacto Verde</button>
+                    <button type="button" id="btn-calcular" class="botao-laranja">Calcular Impacto Verde</button>
                 </form>
             </div>
-            <div class="simulator-results" id="results-box">
-                <h3>Resultados Estimados (Anual)</h3>
-                <div class="result-grid">
-                    <div class="result-card">
-                        <span class="result-val" id="res-co2">0</span>
-                        <span class="result-label">Toneladas de CO₂ sequestradas</span>
+            <div class="resultados-calculadora" id="caixa-resultados">
+                <h3>Resultados Estimados (Em 1 Ano)</h3>
+                <div class="grade-resultados">
+                    <div class="card-resultado">
+                        <span class="numero-resultado" id="res-co2">0</span>
+                        <span class="legenda-resultado">Toneladas de CO₂ guardadas no solo</span>
                     </div>
-                    <div class="result-card">
-                        <span class="result-val" id="res-agua">0</span>
-                        <span class="result-label">Milhões de litros de água poupados</span>
+                    <div class="card-resultado">
+                        <span class="numero-resultado" id="res-agua">0</span>
+                        <span class="legenda-resultado">Milhões de litros de água economizados</span>
                     </div>
-                    <div class="result-card">
-                        <span class="result-val" id="res-solo">0</span>
-                        <span class="result-label">Microorganismos ativos restaurados</span>
+                    <div class="card-resultado">
+                        <span class="numero-resultado" id="res-solo">0</span>
+                        <span class="legenda-resultado">Microrganismos bons recuperados</span>
                     </div>
                 </div>
-                <p class="disclaimer">*Cálculos baseados em médias técnicas de conservação e regeneração agroecológica.</p>
+                <p class="aviso-calculadora">*Cálculos baseados em médias de estudos sobre conservação da terra.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="vozes" class="section-padding bg-light">
+<section id="historias-reais" class="espaco-secao fundo-claro">
     <div class="container">
-        <div class="section-header">
-            <h2>Vozes do Campo</h2>
-            <p>Histórias reais de quem vive da terra e prova que sustentabilidade gera alta rentabilidade.</p>
+        <div class="titulo-secao">
+            <h2>Quem Faz Acontecer</h2>
+            <p>Histórias reais de pessoas que vivem da terra e mostram que cuidar da natureza traz lucro.</p>
         </div>
-        <div class="cases-row">
-            <div class="case-card">
-                <blockquote>"Após a implantação da rotação de culturas e bioinsumos, reduzimos os custos com defensivos químicos em 35% e a nossa produtividade por hectare subiu."</blockquote>
-                <cite>— Seu Valdir, Produtor de Grãos da Região Sul</cite>
+        <div class="linha-depoimentos">
+            <div class="card-depoimento">
+                <blockquote>"Depois que começamos a rodar as plantações e usar adubo biológico, gastamos 35% menos com venenos químicos e a colheita aumentou."</blockquote>
+                <cite>— Seu Valdir, Agricultor da Região Sul</cite>
             </div>
-            <div class="case-card">
-                <blockquote>"A integração Lavoura-Pecuária-Floresta trouxe sombra para o gado e recuperou completamente o pasto que estava degradado. O lucro dobrou."</blockquote>
-                <cite>— Mariana Costa, Engenheira Agrônoma e Pecuarista</cite>
+            <div class="card-depoimento">
+                <blockquote>"Misturar árvore com pasto trouxe sombra pro gado e recuperou a terra que estava fraca. Nosso ganho quase dobrou."</blockquote>
+                <cite>— Mariana Costa, Agrônoma e Pecuarista</cite>
             </div>
         </div>
     </div>
 </section>
 
-<section id="regulatorio" class="section-padding">
+<section id="leis-e-regras" class="espaco-secao">
     <div class="container">
-        <div class="section-header">
-            <h2>Espaço Regulatório e Certificações</h2>
-            <p>Informações fundamentais para adequação do produtor aos mercados mais exigentes do mundo.</p>
+        <div class="titulo-secao">
+            <h2>Regras, Leis e Certificados</h2>
+            <p>O que o produtor precisa seguir para conseguir vender para os mercados mais exigentes.</p>
         </div>
-        <div class="table-container">
-            <table class="regulatory-table">
+        <div class="area-tabela">
+            <table class="tabela-regras">
                 <thead>
                     <tr>
-                        <th>Mecanismo / Norma</th>
-                        <th>O que significa na prática?</th>
-                        <th>Benefício Comercial</th>
+                        <th>Nome da Regra / Norma</th>
+                        <th>O que faz na prática?</th>
+                        <th>Vantagem para o Produtor</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Código Florestal (CAR)</strong></td>
-                        <td>Regularização ambiental da propriedade através do mapeamento de APPs e Reserva Legal.</td>
-                        <td>Garantia de segurança jurídica e acesso a linhas de crédito verde subsidiadas.</td>
+                        <td>Diz onde deve ficar a floresta obrigatória e as áreas protegidas da fazenda.</td>
+                        <td>Evita multas e ajuda a conseguir empréstimos mais baratos no banco.</td>
                     </tr>
                     <tr>
-                        <td><strong>Mercado de Carbono</strong></td>
-                        <td>Remuneração financeira pela manutenção de áreas de floresta em pé e captação de gases estufa.</td>
-                        <td>Nova fonte de receita recorrente para a propriedade rural sustentável.</td>
+                        <td><strong>Créditos de Carbono</strong></td>
+                        <td>Paga em dinheiro para quem mantém árvores em pé e ajuda a limpar o ar.</td>
+                        <td>Uma nova forma de o fazendeiro ganhar dinheiro protegendo o mato.</td>
                     </tr>
                     <tr>
-                        <td><strong>Selos Verdes & Certificações</strong></td>
-                        <td>Auditorias que atestam a ausência de desmatamento e o uso de boas práticas agrícolas.</td>
-                        <td>Abertura direta para canais de exportação na Europa e Ásia com valor agregado.</td>
+                        <td><strong>Selos Verdes</strong></td>
+                        <td>Provam que o alimento foi plantado sem desmatar nada ilegalmente.</td>
+                        <td>Deixa vender os produtos mais caro para países da Europa e Ásia.</td>
                     </tr>
                 </tbody>
             </table>
@@ -185,16 +201,13 @@
     </div>
 </section>
 
-<footer class="main-footer">
-    <div class="container footer-content">
+<footer class="rodape">
+    <div class="container conteudo-rodape">
         <p>&copy; 2026 AgroForte, Futuro Sustentável. Projeto Agrinho - Todos os direitos reservados.</p>
-        <p>Desenvolvido com foco no equilíbrio ecológico e regeneração do campo.</p>
+        <p>Criado por alunos focados no futuro ecológico e na força do campo brasileiro.</p>
     </div>
 </footer>
 
-<script src="script.js"></script>
-</body>
-</html>
-
-<!--pedir pra IA dixar o código, os nomes de classes,id,seções todo o còdigo em uma linguagem de aluno de terceiro ano do ensino médio, mais humana
-menu hamburguer; acessibilidade; libras; modo noturno; tamanho da fonte-->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
